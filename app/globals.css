@@ -1,0 +1,791 @@
+/* ============================================================
+   FONTS — Google Fonts Import
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap');
+
+/* ============================================================
+   TAILWIND DIRECTIVES
+   ============================================================ */
+@import "tailwindcss";
+@theme {
+  --color-tims-red: #C8102E;
+  --color-tims-red-glow: #ff1a3a;
+  --color-tims-dark: #0D0600;
+  --color-tims-dark-2: #1A0A00;
+  --color-tims-dark-3: #2A1408;
+  --color-tims-cream: #FFF5E4;
+  --color-tims-cream-muted: #C9B99A;
+  --color-tims-gold: #D4A017;
+  --color-tims-gold-light: #F5C842;
+  --color-tims-brown: #4A2C2A;
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Outfit", system-ui, sans-serif;
+
+  --shadow-red-glow: 0 0 20px rgba(200,16,46,0.4);
+  --shadow-gold-glow: 0 0 20px rgba(212,160,23,0.4);
+  --shadow-red-glow-lg: 0 0 40px rgba(200,16,46,0.6), 0 0 80px rgba(200,16,46,0.2);
+  --shadow-gold-glow-lg: 0 0 40px rgba(212,160,23,0.6), 0 0 80px rgba(212,160,23,0.2);
+}
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES — Design Tokens
+   ============================================================ */
+:root {
+  /* Brand Colors */
+  --tims-red: #C8102E;
+  --tims-red-glow: #ff1a3a;
+  --tims-dark: #0D0600;
+  --tims-dark-2: #1A0A00;
+  --tims-dark-3: #2A1408;
+  --tims-cream: #FFF5E4;
+  --tims-cream-muted: #C9B99A;
+  --tims-gold: #D4A017;
+  --tims-gold-light: #F5C842;
+  --tims-brown: #4A2C2A;
+
+  /* Glass System */
+  --glass-bg: rgba(255, 245, 228, 0.06);
+  --glass-border: rgba(255, 245, 228, 0.12);
+  --glass-hover: rgba(255, 245, 228, 0.10);
+
+  /* Typography Scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
+  --text-8xl: 6rem;
+
+  /* Fonts */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Outfit', system-ui, sans-serif;
+}
+
+/* ============================================================
+   BASE RESET & GLOBAL STYLES
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  cursor: none;
+}
+
+body {
+  background-color: var(--tims-dark);
+  color: var(--tims-cream);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide default cursor everywhere */
+*, *::before, *::after {
+  cursor: none !important;
+}
+
+/* ============================================================
+   CUSTOM SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--tims-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--tims-brown);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--tims-red);
+}
+
+/* ============================================================
+   TYPOGRAPHY HELPERS
+   ============================================================ */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.text-outlined {
+  -webkit-text-stroke: 1.5px var(--tims-red);
+  color: transparent;
+}
+
+.text-outlined-cream {
+  -webkit-text-stroke: 1px var(--tims-cream);
+  color: transparent;
+}
+
+/* ============================================================
+   GLASS CARD SYSTEM — Core iOS-style glass
+   ============================================================ */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 245, 228, 0.1);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.glass-card:hover {
+  background: var(--glass-hover);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 245, 228, 0.15),
+    inset 0 1px 0 rgba(255, 245, 228, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Glass card variants */
+.glass-card-static {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 245, 228, 0.1);
+}
+
+.glass-card-sm {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 245, 228, 0.08);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ============================================================
+   BUTTON SYSTEM
+   ============================================================ */
+
+/* Primary Red CTA Button */
+.btn-red {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--tims-red);
+  color: var(--tims-cream);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: none;
+  border-radius: 100px;
+  padding: 12px 32px;
+  box-shadow: 0 0 20px rgba(200, 16, 46, 0.4);
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-red:hover {
+  box-shadow: 0 0 40px rgba(200, 16, 46, 0.6), 0 0 80px rgba(200, 16, 46, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-red:active {
+  transform: translateY(0px);
+}
+
+/* Secondary Glass Button */
+.btn-glass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--glass-bg);
+  color: var(--tims-cream);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--glass-border);
+  border-radius: 100px;
+  padding: 10px 24px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-glass:hover {
+  background: var(--glass-hover);
+  border-color: rgba(255, 245, 228, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Gold Button */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--tims-gold);
+  color: var(--tims-dark);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: none;
+  border-radius: 100px;
+  padding: 12px 32px;
+  box-shadow: 0 0 20px rgba(212, 160, 23, 0.4);
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-gold:hover {
+  box-shadow: 0 0 40px rgba(212, 160, 23, 0.6);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   INPUT SYSTEM
+   ============================================================ */
+.input-glass {
+  background: rgba(255, 245, 228, 0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  color: var(--tims-cream);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  padding: 14px 18px;
+  width: 100%;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.input-glass::placeholder {
+  color: var(--tims-cream-muted);
+  opacity: 0.6;
+}
+
+.input-glass:focus {
+  border-color: var(--tims-red);
+  box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.15);
+  background: rgba(255, 245, 228, 0.07);
+}
+
+/* Image optimization */
+img {
+  object-fit: cover;
+}
+/* ============================================================
+   BADGE / PILL SYSTEM
+   ============================================================ */
+.badge-glass {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 100px;
+  padding: 4px 12px;
+  font-size: var(--text-xs);
+  font-family: var(--font-body);
+  color: var(--tims-cream-muted);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.badge-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(212, 160, 23, 0.15);
+  border: 1px solid rgba(212, 160, 23, 0.3);
+  border-radius: 100px;
+  padding: 4px 12px;
+  font-size: var(--text-xs);
+  font-family: var(--font-body);
+  color: var(--tims-gold-light);
+}
+
+.badge-red {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(200, 16, 46, 0.15);
+  border: 1px solid rgba(200, 16, 46, 0.3);
+  border-radius: 100px;
+  padding: 4px 12px;
+  font-size: var(--text-xs);
+  font-family: var(--font-body);
+  color: var(--tims-red-glow);
+}
+
+/* ============================================================
+   SECTION LAYOUT HELPERS
+   ============================================================ */
+.section-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (min-width: 768px) {
+  .section-wrapper {
+    padding: 0 48px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-wrapper {
+    padding: 0 80px;
+  }
+}
+
+.section-spacing {
+  padding-top: clamp(60px, 10vw, 140px);
+  padding-bottom: clamp(60px, 10vw, 140px);
+}
+
+/* ============================================================
+   BACKGROUND SYSTEM
+   ============================================================ */
+
+/* Primary gradient mesh background */
+.bg-gradient-mesh {
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(200, 16, 46, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(212, 160, 23, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 100% at 50% 50%, #1A0A00 0%, #0D0600 100%);
+}
+
+/* Gold mesh (for rewards page) */
+.bg-gradient-gold {
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(212, 160, 23, 0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(200, 16, 46, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 100% at 50% 50%, #1A0A00 0%, #0D0600 100%);
+}
+
+/* Dot grid pattern overlay */
+.bg-dot-grid {
+  background-image: radial-gradient(circle, rgba(255, 245, 228, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Noise/grain texture overlay using pseudo element */
+.bg-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+/* Steam rising effect */
+@keyframes steamRise {
+  0% {
+    transform: translateY(0) scaleX(1);
+    opacity: 0.6;
+    filter: blur(2px);
+  }
+  50% {
+    transform: translateY(-20px) scaleX(1.2);
+    opacity: 0.3;
+    filter: blur(4px);
+  }
+  100% {
+    transform: translateY(-40px) scaleX(0.8);
+    opacity: 0;
+    filter: blur(8px);
+  }
+}
+
+/* Float — for product images */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Glow pulse — for red accent elements */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(200, 16, 46, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(200, 16, 46, 0.6), 0 0 80px rgba(200, 16, 46, 0.2); }
+}
+
+/* Gold glow pulse */
+@keyframes goldGlowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(212, 160, 23, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(212, 160, 23, 0.6), 0 0 80px rgba(212, 160, 23, 0.2); }
+}
+
+/* Shimmer — for skeleton loaders */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Scroll reveal */
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Letter stagger fade in */
+@keyframes letterFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Liquid border morph */
+@keyframes liquidBorder {
+  0%, 100% { border-radius: 24px 28px 22px 26px; }
+  33% { border-radius: 28px 22px 26px 24px; }
+  66% { border-radius: 22px 26px 28px 22px; }
+}
+
+/* Spin slow — for decorative elements */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Fade in */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Scale in */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Slide in from right */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scroll indicator pulse */
+@keyframes scrollPulse {
+  0%, 100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scaleY(0.4);
+    opacity: 0.4;
+  }
+}
+
+/* Count up number (controlled via JS, just the reveal) */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animated gradient border */
+@keyframes borderRotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ============================================================
+   ANIMATION UTILITY CLASSES
+   ============================================================ */
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.animate-gold-glow {
+  animation: goldGlowPulse 2s ease-in-out infinite;
+}
+
+.animate-steam {
+  animation: steamRise 2.5s ease-out infinite;
+}
+
+.animate-liquid-border {
+  animation: liquidBorder 6s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spinSlow 20s linear infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.animate-reveal-up {
+  animation: revealUp 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+/* Shimmer skeleton loader */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--tims-dark-3) 0%,
+    rgba(255, 245, 228, 0.08) 50%,
+    var(--tims-dark-3) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+/* Scroll reveal — add .revealed via Intersection Observer */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+              transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children */
+.stagger-children .reveal-on-scroll:nth-child(1) { transition-delay: 0ms; }
+.stagger-children .reveal-on-scroll:nth-child(2) { transition-delay: 100ms; }
+.stagger-children .reveal-on-scroll:nth-child(3) { transition-delay: 200ms; }
+.stagger-children .reveal-on-scroll:nth-child(4) { transition-delay: 300ms; }
+.stagger-children .reveal-on-scroll:nth-child(5) { transition-delay: 400ms; }
+.stagger-children .reveal-on-scroll:nth-child(6) { transition-delay: 500ms; }
+
+/* ============================================================
+   GRADIENT BORDER CARD (for featured / trending center card)
+   ============================================================ */
+.gradient-border-card {
+  position: relative;
+  border-radius: 24px;
+}
+
+.gradient-border-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, var(--tims-red), var(--tims-gold), var(--tims-red));
+  background-size: 300% 300%;
+  animation: borderRotate 4s ease infinite;
+  z-index: -1;
+}
+
+/* ============================================================
+   CUSTOM CURSOR STYLES
+   ============================================================ */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background: var(--tims-red);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
+  mix-blend-mode: normal;
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid var(--tims-red);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+  opacity: 0.6;
+}
+
+.cursor-ring.hovering {
+  width: 56px;
+  height: 56px;
+  opacity: 1;
+  border-color: var(--tims-red-glow);
+}
+
+.cursor-dot.hovering {
+  width: 6px;
+  height: 6px;
+}
+
+/* ============================================================
+   STEAM EFFECT STYLES
+   ============================================================ */
+.steam-container {
+  position: relative;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.steam-wisp {
+  width: 3px;
+  height: 30px;
+  background: linear-gradient(to top, rgba(255, 245, 228, 0.4), transparent);
+  border-radius: 100px;
+  animation: steamRise 2.5s ease-out infinite;
+}
+
+.steam-wisp:nth-child(2) {
+  animation-delay: 0.8s;
+  height: 24px;
+}
+
+.steam-wisp:nth-child(3) {
+  animation-delay: 1.6s;
+  height: 20px;
+}
+
+/* ============================================================
+   MISC HELPERS
+   ============================================================ */
+
+/* Red glow orb */
+.glow-orb-red {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 16, 46, 0.4) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(40px);
+}
+
+/* Gold glow orb */
+.glow-orb-gold {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 160, 23, 0.3) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(40px);
+}
+
+/* Divider line */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--glass-border);
+}
+
+/* Vertical divider */
+.divider-v {
+  width: 1px;
+  height: 100%;
+  background: var(--glass-border);
+}
+
+/* Selection color */
+::selection {
+  background: rgba(200, 16, 46, 0.3);
+  color: var(--tims-cream);
+}
+
+/* Focus visible for accessibility */
+:focus-visible {
+  outline: 2px solid var(--tims-red);
+  outline-offset: 3px;
+}
+
+/* Image rendering */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Link reset */
+a {
+  color: inherit;
+  text-decoration: none;
+}
