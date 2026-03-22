@@ -6,10 +6,10 @@ import CustomCursor from '@/components/ui/CustomCursor'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Tim Hortons — Canada\'s Finest Since 1964',
+    default: "Tim Hortons — Canada's Finest Since 1964",
     template: '%s | Tim Hortons',
   },
-  description: 'Order your favourite Tim Hortons coffee, food and baked goods. Find locations, earn Tims Rewards and experience Canada\'s finest since 1964.',
+  description: "Order your favourite Tim Hortons coffee, food and baked goods. Find locations, earn Tims Rewards and experience Canada's finest since 1964.",
   keywords: ['Tim Hortons', 'coffee', 'Canada', 'timbits', 'rewards', 'order online'],
   authors: [{ name: 'Tim Hortons' }],
   creator: 'Tim Hortons',
@@ -18,12 +18,12 @@ export const metadata: Metadata = {
     locale: 'en_CA',
     url: 'https://timhortons.ca',
     siteName: 'Tim Hortons',
-    title: 'Tim Hortons — Canada\'s Finest Since 1964',
+    title: "Tim Hortons — Canada's Finest Since 1964",
     description: 'Order your favourite Tim Hortons coffee and food online.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tim Hortons — Canada\'s Finest Since 1964',
+    title: "Tim Hortons — Canada's Finest Since 1964",
     description: 'Order your favourite Tim Hortons coffee and food online.',
   },
   icons: {
