@@ -193,28 +193,7 @@ export default function LoginPage() {
           }}
         />
 
-        {/* Logo */}
-        <div style={{ position: 'relative', zIndex: 10 }}>
-          <Link href="/" style={{
-            display: 'inline-flex', alignItems: 'center', gap: '10px',
-            textDecoration: 'none',
-          }}>
-            <div style={{
-              width: '40px', height: '40px', borderRadius: '12px',
-              background: '#C8102E',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              boxShadow: '0 0 20px rgba(200,16,46,0.5)',
-            }}>
-              <Coffee size={18} strokeWidth={2} color="#FFF5E4" />
-            </div>
-            <span style={{
-              fontFamily: 'var(--font-display)', fontSize: '1.3rem',
-              fontWeight: 600, color: '#C8102E',
-            }}>
-              Tim Hortons
-            </span>
-          </Link>
-        </div>
+        
 
         {/* Center quote */}
         <div style={{ position: 'relative', zIndex: 10 }}>
